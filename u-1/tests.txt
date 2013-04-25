@@ -1,0 +1,4 @@
+octave:1> xs = [0 1 2];
+octave:2> bs = [1 0 -3];
+octave:5> evalLagrangeIntPoly(xs, bs, (-1/2))
+ans =  0.75000
