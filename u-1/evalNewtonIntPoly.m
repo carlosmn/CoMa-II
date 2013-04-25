@@ -5,7 +5,7 @@ function y = evalNewtonIntPoly(xs, a, x)
   % The first value is the last a
   s = a(n);
   
-  for k=n-1:1
+  for k=n-1:-1:1
     s = s * (x - xs(k)) + a(k);
   end
   
