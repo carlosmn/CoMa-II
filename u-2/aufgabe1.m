@@ -7,6 +7,7 @@ function aufgabe1
   hold on
   ys = arrayfun(@(x) evalLagrangeIntPoly(xs, [0 1 0], x), input);
   plot(input, ys, 'g+-');
+  hold on
   ys = arrayfun(@(x) evalLagrangeIntPoly(xs, [0 0 1], x), input);
   plot(input, ys, 'b+-');
   hold on
