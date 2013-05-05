@@ -9,5 +9,7 @@ function aufgabe3a2
   hold off
   plot(xsplot, ret, '+');
   hold on
-  plot(xsplot, reals, '-');
+  plot(xsplot, reals, 'r-');
+
+  legend('Interpoliert', 'Funktion');
 end

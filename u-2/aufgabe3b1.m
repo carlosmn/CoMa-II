@@ -1,6 +1,6 @@
-function aufgabe3a2(n)
+function aufgabe3b1(n)
   % calculate the values for x
-  xs = 1:n.-1;
+  xs = 1:n-1;
   xs = xs.*(4/(n-1));
   xs = xs.-2;
 

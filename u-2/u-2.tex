@@ -1,0 +1,119 @@
+\documentclass[a4paper,ngerman]{scrartcl}
+\usepackage{listings}
+\usepackage[ngerman]{babel}
+\usepackage{dsfont}
+\usepackage{amsmath, amsthm}
+\usepackage{amssymb}
+\usepackage{wasysym}
+\usepackage{cancel}
+\usepackage{graphicx}
+
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+
+\usepackage{fullpage}
+
+%Compiler
+\usepackage{ifxetex}
+\usepackage{ifluatex}
+\ifxetex
+  \usepackage{fontspec,xunicode}
+  \catcode`\ß=13
+  \defß{\ss}
+\else\ifluatex
+  \usepackage{fontspec,xunicode}
+\else
+  \usepackage[utf8]{inputenc}
+\fi\fi
+% /Compiler
+
+\newcommand{\R}{\ensuremath{\mathds{R}}}%
+\newcommand{\N}{\ensuremath{\mathds{N}}}%
+\newcommand{\kabs}{\ensuremath{\kappa_{\text{abs}}}}%
+\newcommand{\krel}{\ensuremath{\kappa_{\text{rel}}}}%
+\newcommand{\krels}[1]{\ensuremath{\kappa_{\text{rel}_#1}}}%
+\newcommand{\BO}{\ensuremath{\mathcal{O}}}%
+
+\begin{document}
+\title{CoMa-II}
+\subtitle{2. Zettel}
+\author{Carlos Martín Nieto \and Tran Tu}
+\maketitle
+
+\section*{Aufgabe 2}
+
+Für $n=0$ ist es Trivial, da es nur $x_0$ gibt. Für $n=1$ gibt nur
+zwei mögliche Reihenfolgen ($[x_0,x_1]$ und $[x_1,x_0]$). Wir beweisen
+es so:
+
+\begin{align*}
+  f[x_0,x_1] &= \frac{f[x_1] - f[x_0]}{x_1-x_0} =
+  \frac{f[x_1]}{x_1-x_0}-\frac{f[x_0]}{x_1-x_0} = 
+  \overbrace{\frac{f[x_0]}{x_0-x_1} + \frac{f[x_1]}{x_1-x_0}}^{(\star)}=\\
+  &= \frac{f[x_0]}{x_0-x_1} - \frac{f[x_1]}{x_0-x_1} =\frac{f[x_0] - f[x_1]}{x_0-x_1} = f[x_1,x_0]
+\end{align*}
+
+Allgemeiner, $f[x_0,\dots,x_n]$ kann auch so geschrieben werden (mit $i$ der aktueller Index)
+\[
+f[x_0,\dots,x_n] = \frac{f[x_0]}{\displaystyle\prod^{n}_{\scriptsize{
+    \begin{array}{cc}
+      j=0\\j\neq i
+    \end{array}
+}} (x_i-x_j)} + \dots +
+\frac{f[x_n]}{\displaystyle\prod^{n}_{\scriptsize{
+    \begin{array}{cc}
+      j=0\\j\neq i
+    \end{array}
+}} (x_i-x_j)} =
+\sum^n_{i=0} f[x_i]\left[ \prod^n_{\scriptsize{
+    \begin{array}{cc}
+      j=0\\j\neq i
+    \end{array}
+}}\frac{1}{(x_i-x_j)}\right]
+\]
+
+und daher spielt die Reihenfolge keine Rolle.
+
+\begin{proof}
+  Per Induction. $n=1$ wurde schon in $( \star)$ gezeigt. Es gilt zu beweisen, dass wenn
+  $n\to n+1$, diese Formel immer noch gültig ist.
+\begin{align*}
+  f[x_0,\dots,x_{n+1}] &= \frac{f[x_1,\dots,x_{n+1}] - f[x_0,\dots,x_n]}{x_{n+1}-x_0}=\\
+  &=\frac{1}{x_{n+1}-x_0}f[x_1,\dots,x_{n+1}]) - \frac{1}{x_{n+1}-x_0}f[x_0,\dots,x_n]\\
+  &= \frac{1}{x_{n+1}-x_0}f[x_1,\dots,x_{n+1}]) + \frac{1}{x_{0}-x_{n+1}}f[x_0,\dots,x_n]\\
+\end{align*}
+Wir wissen schon wie $n+1$-elementige dividierte Differenzen
+aussehen. In diesem Fall mit $n=2$
+\begin{align*}
+f[x_0,x_1,x_2]  &= \frac{1}{x_{2}-x_0}\left[ \frac{f[x_1]}{x_1-x_2} + \frac{f[x_2]}{x_2-x_1}\right] -
+\frac{1}{x_{2}-x_0}\left[ \frac{f[x_0]}{x_0-x_1} + \frac{f[x_1]}{x_1-x_0}\right] =\\
+&= \frac{f[x_0]}{(x_0-x_1)(x_0-x_2)} + \frac{f[x_1]}{(x_1-x_0)(x_1-x_2)} + \frac{f[x_2]}{(x_2-x_1)(x_2-x_0)}
+\end{align*}
+
+Die $f[x_0]$ und $f[x_2]$ Terme sind offensichtlich. Die Berechnung
+des $f[x_1]$-Terms ist etwas umständlicher, und zwar
+\begin{align*}
+&  \frac{1}{x_2-x_0}\left[\frac{f[x_1]}{(x_1-x_2)}-\frac{f[x_1]}{(x_1-x_0)}\right] =
+\frac{1}{x_2-x_0}\left[\frac{f[x_1](x_1-x_0)-f[x_1](x_1-x_2)}{(x_1-x_2)(x_1-x_0)}\right] =\\
+=& \frac{1}{x_2-x_0}\left[ \frac{f[x_1](\cancel{x_1}-x_0\cancel{-x_1}+x_2)}{(x_1-x_2)(x_1-x_0)} \right] =
+\frac{1}{\cancel{x_2-x_0}}\cdot \frac{\cancel{x_2-x_0}}{1}\cdot \frac{f[x_1]}{(x_1-x_0)(x_1-x_2)}
+\end{align*}
+\end{proof}
+
+\section*{Aufgabe 3}
+
+\paragraph{b)}
+
+Es gibt keine wesentliche Unterschiede zwischen die Genauigkeit bei 10
+und bei 100 Stützstellen. Bei 100 Stützstellen gibt es in der Nähe von
+$-2$ Ungenauigkeiten (ein oder zwei Werte sind sehr groß), die im
+\texttt{HP}-Graph nicht zu sehen sind, da sonst die meisten Werte alle
+gleich aussehen würden.
+
+\section*{Aufgabe 4}
+
+Wie bei Aufgabe 3, bilden sich am Rande einige Ungenauigkeiten. Bei
+den Stützstellen in der Nähe von 2 (mit 100 Stützstellen) sinken die
+Werte statt zu steigen.
+
+\end{document}
