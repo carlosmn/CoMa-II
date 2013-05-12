@@ -1,0 +1,64 @@
+\documentclass[ngerman,a4paper]{scrartcl}
+\usepackage{relsize}
+\usepackage{fullpage}
+\usepackage[german]{babel}
+\usepackage{graphicx}
+
+%Compiler
+\usepackage{ifxetex}
+\usepackage{ifluatex}
+\ifxetex
+  \usepackage{fontspec,xunicode}
+  \catcode`\ß=13
+  \defß{\ss}
+\else\ifluatex
+  \usepackage{fontspec,xunicode}
+\else
+  \usepackage[utf8]{inputenc}
+\fi\fi
+% /Compiler
+
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage{listings}
+\lstset{frame=single}
+
+\newcommand{\norm}[1]{\left|\!\left|#1\right|\! \right|}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+
+\begin{document}
+{\sffamily
+  \hfill
+  Computerorientierete Mathematik SS 2013\hfill
+  FU Berlin\\[8pt]
+  \noindent {\Huge Übung 3}\hfill Tutor Mark Glaß \hfill Carlos Martín Nieto, Tran Tu\hrule \bigskip
+}
+
+\section*{2}
+
+\paragraph{a)}
+
+Zeigen Sie, dass die Newton-Côtes-Formeln für alle
+$n\in\N\setminus\{0\}$ symmetrisch sind.
+
+Zur zeigen ist, dass $\lambda_0 = \lambda_{n-0}$, $\lambda_1 =
+\lambda_{n-1}$. Also, dass $\lambda_k = \lambda_{n-k}$. Die Gewichte
+werden durch
+\[
+\lambda_k = \frac{1}{n} \int\limits^n_0\prod^n_{\substack{j=0\\j\neq k}} \frac{s-j}{k-j}\text{d}s
+\]
+gegeben. Die Werte hängen also nur von $n$ und $k$ ab. Wenn wir in der
+Formel $k$ mit $n-k$ ersetzen,  Wir Konzentrieren uns auf das Produkt und schreiben es so:
+\begin{align*}
+  \prod^n_{\substack{j=0\\j\neq k}} \frac{s-j}{k-j}\text{d}s &= \frac{(s-0)(s-1)\dots(s-(k-1))(s-(k+1))\dots(s-(n-1))(s-n)}
+  {(k-0)(k-1)\dots((k-(k-1))(k-(k+1))\dots(k-(n-1))(k-n)}\\
+  \intertext{Jetzt tauschen wir $k$ mit $n-k$}
+  \prod^n_{\substack{j=0\\j\neq n-k}} \frac{s-j}{n-k-j}\text{d}s &= \frac{(s-0)(s-1)\dots(s-(n-k-1))(s-(n-k+1))\dots(s-(n-1))(s-n)}
+  {(n-k-0)(n-k-1)\dots(n-k-(n-k-1))(n-k-(n-k+1))\dots(n-k-n)}
+\end{align*}
+
+Man sieht, dass die Brüche sich Spiegeln. $(k-0)$ ist äquivalent zu
+$(n-k-n)=(-k)$ und die andere wirken ähnlich. Zwar ist die Zahl
+negativ, aber das gleich sich aus.
+
+\end{document}
