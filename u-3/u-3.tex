@@ -61,4 +61,30 @@ Man sieht, dass die Brüche sich Spiegeln. $(k-0)$ ist äquivalent zu
 $(n-k-n)=(-k)$ und die andere wirken ähnlich. Zwar ist die Zahl
 negativ, aber das gleich sich aus.
 
+\section*{3}
+
+Wir definieren $N_{n+1}(x) = (x - x_0)\dots(x-x_n)$ und $R$ als
+überbleibendes Polynom vom Grad $n$. Wir können das Polynom $p \in
+P_{n+1}$ so definieren
+
+\[
+p = a_{n+1} \cdot N_{n+1} + R
+\]
+
+Der Fehler berechnen wir mit
+
+\begin{align*}
+  E_n(p) &= |I(p) - I_n(p)|\\
+  \intertext{Aus der Exaktheit von Grad $n$ folgt}
+  &= a_{n+1}\cdot\left[I\left(N_{n+1}\right) -
+    I_n\left(N_{n+1}\right)\right]
+\end{align*}
+
+$N_{n+1}$ ist punktsymmetrisch zu $\frac{a+b}{2}$, und daher ist
+$I(N_{n+1}) = 0$.\\
+
+$I_n(N_{n+1})$ ist $(x_0 - x_n)\sum^n_{k=1} \lambda_k N_{n+1}(x_n)$
+und wird auch Null da die Summe mit den Nullstellen des
+Newton-Polynoms arbeitet.
+
 \end{document}
