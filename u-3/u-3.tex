@@ -51,32 +51,48 @@ Der Plot von $w(x)$ über $[-1,1]$ bleibt bei Null, während der Plot
 $[-1,1]$ ist stabiler als $[-3,3]$.
 
 \section*{2}
-
 \paragraph{a)}
-
-Zeigen Sie, dass die Newton-Côtes-Formeln für alle
-$n\in\N\setminus\{0\}$ symmetrisch sind.
-
-Zur zeigen ist, dass $\lambda_0 = \lambda_{n-0}$, $\lambda_1 =
-\lambda_{n-1}$. Also, dass $\lambda_k = \lambda_{n-k}$. Die Gewichte
-werden durch
+Es gilt, dass
 \[
-\lambda_k = \frac{1}{n} \int\limits^n_0\prod^n_{\substack{j=0\\j\neq k}} \frac{s-j}{k-j}\text{d}s
+\sum^n_{k=0} f(k) = \sum^n_{k=0} f(n-k) \quad (*)
 \]
-gegeben. Die Werte hängen also nur von $n$ und $k$ ab. Wir
-Konzentrieren uns auf das Produkt und schreiben es so:
+
+und
+\[
+\int\limits^b_a f(t) dt = \int\limits^b_a f(a+b-t) dt \quad (**)
+\]
+
+Jetzt berechnen wir die Relation zwischen $x_k$ und $x_{n-k}$
+
 \begin{align*}
-  \prod^n_{\substack{j=0\\j\neq k}} \frac{s-j}{k-j}\text{d}s &= \frac{(s-0)(s-1)\dots(s-(k-1))(s-(k+1))\dots(s-(n-1))(s-n)}
-  {(k-0)(k-1)\dots(k-(k-1))(k-(k+1))\dots(k-(n-1))(k-n)}\\
-  \intertext{Jetzt tauschen wir $k$ mit $n-k$}
-  \prod^n_{\substack{j=0\\j\neq n-k}} \frac{s-j}{n-k-j}\text{d}s &= \frac{(s-0)(s-1)\dots(s-(n-k-1))(s-(n-k+1))\dots(s-(n-1))(s-n)}
-  {(n-k-0)(n-k-1)\dots(n-k-(n-k-1))(n-k-(n-k+1))\dots(n-k-n)}
+  x_K &= a+hk\quad h = \frac{b-a}{n}\\
+  x_{n-k} &= a+h(n-k) = a+(b-a) - kh = b-kh\\
+  x_k + x_{n-k} &= a+b\\
+  x_k &= a+b-x_{n-k}
 \end{align*}
 
-Man sieht, dass die Brüche sich Spiegeln. $(k-0)$ ist äquivalent zu
-$(n-k-n)=(-k)$ und die andere wirken ähnlich. Zwar ist die Zahl
-negativ, aber das gleich sich aus.
+Aus
+\[
+\int\limits^b_a f(t) dt = \sum^n_{k=0} \lambda_k f(x_k) + R
+\]
 
+können wir es auch so schreiben:
+
+\begin{align*}
+  \int\limits^b_a f(a+b-t) dt &= \sum^n_{k=0} \lambda_k f(a+b-x_k)
+  + R\\
+  \int\limits^b_a f(t) dt &= \sum^n_{k=0} \lambda_{n-k} f(a+b-x_{n-k})
+  + R
+\end{align*}
+
+Aus $(*)$ und $(**)$ und $x_k = a+b-x_{n-k}$ ist dies auch gleich
+\[
+\int\limits^b_a f(t) dt =\sum^n_{k=0} \lambda_{n-k} f(x_k) + R
+\]
+
+Und somit muss $\lambda_k$ den gleichen Wert haben als $\lambda_{n-k}$
+
+\hfill$\square$
 \section*{3}
 
 Wir definieren $N_{n+1}(x) = (x - x_0)\dots(x-x_n)$ und $R$ als
