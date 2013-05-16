@@ -1,6 +1,6 @@
 function y = evalLagrangeIntPoly(xs, bs, x)
   % Get the size of the vector
-  [_, n] = size(bs);
+  [dummy, n] = size(bs);
 
   acc = 0;
 

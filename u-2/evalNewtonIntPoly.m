@@ -1,6 +1,6 @@
 function y = evalNewtonIntPoly(xs, a, x)
   % Get the size of the vector
-  [_, n] = size(a);
+  [dummy, n] = size(a);
   
   % The first value is the last a
   s = a(n);

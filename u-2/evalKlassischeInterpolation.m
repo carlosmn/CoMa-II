@@ -1,6 +1,6 @@
 function ret = evalKlassischeInterpolation(xs, ys)
   ys = ys'; % we need a column vector
-  [_, len] = size(xs);
+  [dummy, len] = size(xs);
 
   A = [];
   for i=1:len

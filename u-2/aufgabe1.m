@@ -12,7 +12,7 @@ function aufgabe1
   plot(input, ys, 'b-');
   hold on
   ys = arrayfun(@(x) evalLagrangeIntPoly(xs, [1 0 -3], x), input);
-  plot(input, ys, '4-');
+  plot(input, ys, 'p');
   hold off
 
   legend('L_0', 'L_1', 'L_2', 'Interpolationspolynom');

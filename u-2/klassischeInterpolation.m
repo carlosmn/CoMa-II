@@ -3,10 +3,10 @@ function ret = klassischeInterpolation(xs, ys, xsplot)
   as = as';
 
   ret = [];
-  [_, xslen] = size(xs);
+  [dummy, xslen] = size(xs);
   % list of powers
   powers = xslen-1:-1:0;
-  [_, len] = size(xsplot);
+  [dummy, len] = size(xsplot);
   for i=1:len
     % intermediate results
     mid = xsplot(i).^powers;

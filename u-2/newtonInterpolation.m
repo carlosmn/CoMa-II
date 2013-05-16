@@ -1,5 +1,5 @@
 function ret = newtonInterpolation(xs, ys, xsplot)
-  [_, n] = size(xs);
+  [dummy, n] = size(xs);
   % figure out the factors for Horner
   as = newtonDivDiff(xs, ys);
 

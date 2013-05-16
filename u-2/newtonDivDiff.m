@@ -1,6 +1,6 @@
 function ys = newtonDivDiff(xs, input)
   % Get the size of the vector
-  [_, n] = size(xs);
+  [dummy, n] = size(xs);
 
   if n == 1
      ys = [f(xs(1))];

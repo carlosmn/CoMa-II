@@ -3,7 +3,7 @@ function aufgabe3b1b
   xs = bases(10);
   ys = xs.^2 + xs*5 - 2;
   xsplot = linspace(-2, 2, 100);
-  reals = xsplot.^2 + (xsplot .* 5) .- 2;
+  reals = xsplot.^2 + (xsplot .* 5) - 2;
 
   ret = klassischeInterpolation(xs, ys, xsplot);
 
@@ -13,12 +13,12 @@ function aufgabe3b1b
   plot(xsplot, ret, 'r-');
 
   xs = bases(100);
-  ys = xs.^2 .+ (xs .* 5) .- 2;
-  ## ret = klassischeInterpolation(xs, ys, xsplot);
+  ys = xs.^2 + (xs .* 5) - 2;
+  %% ret = klassischeInterpolation(xs, ys, xsplot);
 
-  ## hold on
-  ## plot(xsplot, ret, 'gx');
-  ## axis([-2 2 -10 15]);
+  %% hold on
+  %% plot(xsplot, ret, 'gx');
+  %% axis([-2 2 -10 15]);
 
   legend('Echte Werte', 'Mit 10');
 end
@@ -26,5 +26,5 @@ end
 function xs = bases(n)
   xs = 1:n-1;
   xs = xs.*(4/(n-1));
-  xs = xs.-2;
+  xs = xs-2;
 end

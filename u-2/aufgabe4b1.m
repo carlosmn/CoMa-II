@@ -25,5 +25,5 @@ end
 function xs = bases(n)
   xs = 1:n-1;
   xs = xs.*(4/(n-1));
-  xs = xs.-2;
+  xs = xs-2;
 end
