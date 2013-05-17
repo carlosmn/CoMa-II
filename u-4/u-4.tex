@@ -1,0 +1,100 @@
+\documentclass[ngerman,a4paper]{scrartcl}
+\usepackage{relsize}
+\usepackage{fullpage}
+\usepackage[german]{babel}
+\usepackage{graphicx}
+
+%Compiler
+\usepackage{ifxetex}
+\usepackage{ifluatex}
+\ifxetex
+  \usepackage{fontspec,xunicode}
+  \catcode`\ß=13
+  \defß{\ss}
+\else\ifluatex
+  \usepackage{fontspec,xunicode}
+\else
+  \usepackage[utf8]{inputenc}
+\fi\fi
+% /Compiler
+
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage{listings}
+\lstset{frame=single}
+
+\newcommand{\norm}[1]{\left|\!\left|#1\right|\! \right|}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+
+\begin{document}
+{\sffamily
+  \hfill
+  Computerorientierete Mathematik SS 2013\hfill
+  FU Berlin\\[8pt]
+  \noindent {\Huge Übung 4}\hfill Carlos Martín Nieto, Tran Tu\hrule \bigskip
+}
+
+\section*{2}
+
+\paragraph{a)}
+
+Die Behauptung ist, dass 
+
+\[
+\int^b_a f(x)\, dx \approx \int^b_a p_1(x)\, dx
+\]
+
+der Trapezregel entspricht. Wir formen beide Seiten um, um dies zu
+Testen. Zuerst wenden wir die Trapezregel an.
+
+\begin{align*}
+  \int^a_b f(x)\, dx &= \frac{a-b}{2n} \big[ f(x_0) + f(x_1) \big] & n
+  = 1,\, x_0 = a,\, x_1 = b\\
+  &= \frac{a-b}{2} \big[f(a) + f(b)\big] \quad (*)
+\end{align*}
+
+Und von der anderen Seite schreiben wir es auch um
+
+\begin{align*}
+  \int^b_a p_1(x)\, dx &= (b-a) \sum^n_{k=0} f(x_k) \lambda_k & n = 1\\
+  &= (b-a)\big[f(x_0)\lambda_0 + f(x_1)\lambda_1\big] &  x_0 = a,\, x_1 = b,\, \lambda_{0,1}
+  = \frac{1}{2}\\
+  &= (b-a)\big[f(a)\frac{1}{2} + f(b)\frac{1}{2}\big]\\
+  &= \frac{a-b}{2} \big[f(a) + f(b)\big] \quad (**)
+\end{align*}
+
+Offensichtlich sind $(*)$ und $(**)$ gleich, also stimmt die Behauptung.
+
+\paragraph{b)}
+
+Die Behauptung ist, dass 
+
+\[
+\int^b_a f(x)\, dx \approx \int^b_a p_2(x)\, dx
+\]
+
+der Simpsonregel entspricht. Wir formen beide Seiten um, um dies zu
+Testen. Zuerst wenden wir die Simpsonregel an.
+
+\begin{align*}
+  \int^a_b f(x)\, dx &= \frac{a-b}{6} \left[ f(a) +
+    4f\left(\frac{a+b}{2}\right) + f(b)\right] \quad (*)
+\end{align*}
+
+Jetzt schreiben wir die Rechte Seite um
+
+\begin{align*}
+  \int^b_a p_2(x)\, dx &= (b-a) \sum^n_{k=0} f(x_k) \lambda_k & n = 2\\
+  &= (b-a)\left[f(x_0)\lambda_0 + f\left(x_1\right)\lambda_1 +
+    f(x_2)\lambda_2\right]\\
+  &= (b-a)\left[f(a)\frac{1}{6} +
+    f\left(\frac{1}{2}(a+b)\right)\frac{4}{6} +
+    f(b)\frac{1}{6}\right]\\
+  &= \frac{b-a}{6} \left[f(a) + f\left(\frac{a+b}{2}\right)\cdot 4 +
+    f(b) \right] \quad (**)
+\end{align*}
+
+Auch hier sind $(*)$ und $(**)$ offensichtlich gleich, also stimmt
+auch diese Behauptung.
+
+\end{document}
