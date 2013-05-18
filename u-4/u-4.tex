@@ -34,6 +34,34 @@
   \noindent {\Huge Übung 4}\hfill Carlos Martín Nieto, Tran Tu\hrule \bigskip
 }
 
+\section*{1}
+
+Die Fehlerabschätzung wird im Skript so beschrieben
+
+\[
+\norm{f - p_n}_\infty \leq \frac{1}{(n+1)!} \norm{f^{(n+1)}}_\infty \norm{w}_\infty
+\]
+
+Unser $n=2$ und $\norm{w}_\infty$ ist auch aus dem Skript zu lesen:
+
+\[
+\norm{w}_\infty = \max_{x\in [a,b]} \left|(x-x_0) \dots (x-x_n)\right|
+\]
+
+Dies kann man leicht mit Matlab berechnen und kommt auf
+$\norm{w}_\infty = 0,3849$. $f^{(3)}$ löst man und kommt auf
+
+\[
+f^{(3)} = \frac{1}{2^3} \exp(x/2)
+\]
+
+was man auch an Matlab übergibt, um auf $\norm{f^{(3)}} = 0,20609$ zu
+kommen. Fügt man alles zusammen und wir kommen auf
+
+\[
+\norm{f - p_n}_\infty \leq \frac{0,20609}{3!} \cdot 0,3849 = \boxed{0,013221}
+\]
+
 \section*{2}
 
 \paragraph{a)}
