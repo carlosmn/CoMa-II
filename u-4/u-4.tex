@@ -62,6 +62,14 @@ kommen. Fügt man alles zusammen und wir kommen auf
 \norm{f - p_n}_\infty \leq \frac{0,20609}{3!} \cdot 0,3849 = \boxed{0,013221}
 \]
 
+\begin{lstlisting}[language=octave]
+max(abs(arrayfun(@(x) (x - xs(1)) * (x - xs(2)) * (x - xs(3)),
+    linspace(-1, 1, 1000))))
+      -> 0,38490
+max(arrayfun(@(x) (exp(x/2)), linspace(-1, 1, 1000)))/8
+      -> 0,20609
+\end{lstlisting}
+
 \section*{2}
 
 \paragraph{a)}
