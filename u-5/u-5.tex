@@ -1,0 +1,78 @@
+\documentclass[ngerman,a4paper]{scrartcl}
+\usepackage{relsize}
+\usepackage{fullpage}
+\usepackage[german]{babel}
+\usepackage{graphicx}
+
+%Compiler
+\usepackage{ifxetex}
+\usepackage{ifluatex}
+\ifxetex
+  \usepackage{fontspec,xunicode}
+  \catcode`\ß=13
+  \defß{\ss}
+\else\ifluatex
+  \usepackage{fontspec,xunicode}
+\else
+  \usepackage[utf8]{inputenc}
+\fi\fi
+% /Compiler
+
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage{listings}
+\lstset{frame=single}
+
+\newcommand{\norm}[1]{\left|\!\left|#1\right|\! \right|}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+
+\begin{document}
+{\sffamily
+  \hfill
+  Computerorientierete Mathematik SS 2013\hfill
+  FU Berlin\\[8pt]
+  \noindent {\Huge Übung 5}\hfill Carlos Martín Nieto, Tran Tu\hrule \bigskip
+}
+
+\section*{1}
+
+Aus dem Skript erfahren wir die Fehlerabschätzung der summierten Trapetzregel, und zwar ist sie
+
+\[
+|I(f) - S^{(n)}_n(f)| \leq \frac{h^2}{12}(b-a)\norm{f''}_\infty
+\]
+
+Wir wollen, dass der Fehler unter $10^{-4}$ bleibt. $a$ und $b$ stehen fest, sowie $f$. Die freie Variable ist dann $h$. Wir rechnen mit diesen Werten und berechnen $h$.
+
+\[
+  10^{-4} = \frac{h^2}{12} (a-b) \norm{f''}_\infty
+\]
+
+Zuerst finden wir heraus, was $\norm{f''}_\infty$ ist
+
+
+\begin{align*}
+  f'' &= \sin(\pi x)'' = \pi \cos(\pi x)' = \pi \cdot \pi \cdot       [-\sin(\pi x)] = -\pi^2 \sin(\pi x)\\
+\norm{f''}_\infty &= \norm{-\pi^2 \sin(\pi x)}_\infty
+\end{align*}
+
+Und da Sinus $[-1, 1]$ als Ausgabe hat, ist $\norm{f''}_\infty = \pi^2$. Setzen wir das in der Formel
+
+\begin{align*}
+  10^{-4} &= \frac{h^2}{12} (a-b) \norm{f''}_\infty\\
+  10^{-4} &= \frac{h^2}{12} \underbrace{(a-b)}_{(1 - 0)} \pi^2 = \frac{\pi^2 h^2}{12}\\
+\intertext{Da wir $h$ berechnen wollen}
+h^2 &= \frac{12\cdot 10^{-4}}{\pi^2}\\
+h &= \sqrt{\frac{12\cdot 10^{-4}}{\pi^2}} = \frac{\sqrt{12\cdot 10^{-4}}}{\pi}\\
+h &= \frac{0.034641}{\pi} = 0.011027
+\end{align*}
+
+Diese ist die maximale Größe eines Teilintervals, um die gewünschte Genauigkeit zu erreichen. $h$ ist aber eigentlich ein Stellvertreter für $n$, die Anzahl der Teilintervale, was eine natürliche Zahl ist
+
+\[
+n = \left\lceil \frac{1}{h} \right\rceil = \left\lceil \frac{1}{0.011027} \right\rceil = \left\lceil 90.686 \right\rceil = 91
+\]
+
+Wir brauchen also mindestens 91 Teilintervale, um die gewünschte Genauigkeit zu erreichen, was $h$ zu 0.010989 bringt.
+
+\end{document}
