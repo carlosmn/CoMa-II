@@ -16,14 +16,14 @@ xs = linspace(I(1), I(2), n);
 
 % We use x_{k-1} very often, so let's cache that by storing then
 % offset once to the left (i.e. fewer, k-1)
-len = size(xs)(2);
+[~, len] = size(xs);
 xs2 = xs(2:len);
 
 % We can pre-calculate (x_k - x_{k-1}) which we need several times
-xdiffs = xs(1:len-1) .- xs2;
+xdiffs = xs(1:len-1) - xs2;
 
 % \xi_k = x_{k-1} + q(x_k - x_{k-1})
-xis = xs2 .+ q .* xdiffs;
+xis = xs2 + q .* xdiffs;
 
 % We now sum f(\xi_k) * (x_k - x_{k-1})
 ys = f(xis);
