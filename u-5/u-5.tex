@@ -45,7 +45,7 @@ Aus dem Skript erfahren wir die Fehlerabschätzung der summierten Trapetzregel, 
 Wir wollen, dass der Fehler unter $10^{-4}$ bleibt. $a$ und $b$ stehen fest, sowie $f$. Die freie Variable ist dann $h$. Wir rechnen mit diesen Werten und berechnen $h$.
 
 \[
-  10^{-4} = \frac{h^2}{12} (a-b) \norm{f''}_\infty
+  10^{-4} = \frac{h^2}{12} (b-a) \norm{f''}_\infty
 \]
 
 Zuerst finden wir heraus, was $\norm{f''}_\infty$ ist
@@ -59,8 +59,8 @@ Zuerst finden wir heraus, was $\norm{f''}_\infty$ ist
 Und da Sinus $[-1, 1]$ als Ausgabe hat, ist $\norm{f''}_\infty = \pi^2$. Setzen wir das in der Formel
 
 \begin{align*}
-  10^{-4} &= \frac{h^2}{12} (a-b) \norm{f''}_\infty\\
-  10^{-4} &= \frac{h^2}{12} \underbrace{(a-b)}_{(1 - 0)} \pi^2 = \frac{\pi^2 h^2}{12}\\
+  10^{-4} &= \frac{h^2}{12} (b-a) \norm{f''}_\infty\\
+  10^{-4} &= \frac{h^2}{12} \underbrace{(b-a)}_{(1 - 0)} \pi^2 = \frac{\pi^2 h^2}{12}\\
 \intertext{Da wir $h$ berechnen wollen}
 h^2 &= \frac{12\cdot 10^{-4}}{\pi^2}\\
 h &= \sqrt{\frac{12\cdot 10^{-4}}{\pi^2}} = \frac{\sqrt{12\cdot 10^{-4}}}{\pi}\\
