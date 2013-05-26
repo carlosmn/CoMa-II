@@ -3,6 +3,7 @@
 \usepackage{fullpage}
 \usepackage[german]{babel}
 \usepackage{graphicx}
+\usepackage{cancel}
 
 %Compiler
 \usepackage{ifxetex}
@@ -29,12 +30,14 @@
 \begin{document}
 {\sffamily
   \hfill
-  Computerorientierete Mathematik SS 2013\hfill
+  CoMa-II SS 2013\hfill
   FU Berlin\\[8pt]
   \noindent {\Huge Übung 5}\hfill Carlos Martín Nieto, Tran Tu\hrule \bigskip
 }
 
 \section*{1}
+
+\paragraph{a)}
 
 Aus dem Skript erfahren wir die Fehlerabschätzung der summierten Trapetzregel, und zwar ist sie
 
@@ -74,5 +77,43 @@ n = \left\lceil \frac{1}{h} \right\rceil = \left\lceil \frac{1}{0.011027} \right
 \]
 
 Wir brauchen also mindestens 91 Teilintervale, um die gewünschte Genauigkeit zu erreichen, was $h$ zu 0.010989 bringt.
+
+\paragraph{b)}
+
+Wir haben eine Quadraturformel der Form
+
+\[
+\sum^2_{k=0} \lambda_k f(x_k)
+\]
+
+wobei die Gewichte die Form
+
+\[
+\lambda_k = \frac{1}{b-a} \int\limits^b_a L_k(x) dx
+\]
+
+annehmen. Also berechnen wir die Gewichte. $\lambda_0$ wird mit $f(x_0) = f(0) = 0$ multipliziert, also müssen wir nicht berechnen. Wir fangen mit den Lagrangepolynome an.
+
+\begin{align*}
+  L_k(x) &= \prod^n_{\substack{i=0\\i\neq k}} \frac{x - x_i}{x_k-x_i}         \quad k = 0,\dots,n\\
+L_1(x) &= \frac{x - 0}{\frac{1}{4} - 0} \cdot \frac{x - 1}{\frac{1}{4} -1} = \frac{x^2 - x}{\frac{-3}{16}}\\
+L_2(x) &= \frac{x-0}{1 - 0}\cdot \frac{x - \frac{1}{4}}{1 - \frac{1}{4}} = x \cdot \frac{x - \frac{1}{4}}{\frac{3}{4}} = \frac{x^2 - \frac{1}{4}x}{\frac{3}{4}}
+\end{align*}
+
+Und jetzt die Gewichte. $\frac{1}{b-a} = \frac{1}{1-0} = 1$ also lassen wir es weg von der Berechnungen.
+
+\begin{align*}
+  \lambda_k &= \int_0^1 L_k(x) dx\\
+  \lambda_1 &= \left.\frac{\frac{1}{3}x^3 - \frac{1}{2} x^2}{\frac{-3}{16}}\right|_0^1 = \frac{\frac{1}{3} - \frac{1}{2}}{\frac{-3}{16}} = \frac{8}{9}\\
+\lambda_2 &= \left. \frac{\frac{1}{3}x^3 - \frac{1}{8}x^2}{\frac{3}{4}} \right|_0^1 = \frac{\frac{1}{3}-\frac{1}{8}}{\frac{3}{4}} = \frac{5}{18}
+\end{align*}
+
+Jetzt fehlt nur einsetzen.
+
+\begin{align*}
+  \int\limits_0^1 f(x) &\approx \sum^2_{k=0} \lambda_k f(x_k) = \cancelto{0}{\lambda_0 f(x_0)} + \lambda_1 f(x_1) + \lambda_2 f(x_2)\\
+&= \underbrace{\frac{8}{9}}_{\frac{16}{18}} f\left(\frac{1}{4}\right) + \frac{5}{18} f(1) = \frac{16}{18} f\left(\frac{1}{4}\right) + \frac{5}{18} f(1)\\
+&= \frac{1}{18}\left[ 16 f\left(\frac{1}{4}\right) + 5 f(1) \right]
+\end{align*}
 
 \end{document}
