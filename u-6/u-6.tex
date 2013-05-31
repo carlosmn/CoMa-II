@@ -64,4 +64,23 @@ F(t,y) &= 2-2y
 \end{align*}
 
 was den Wert in der Aufgabenstellung entspricht.
+
+\section*{2}
+
+Sei $x(t)$ die Anzahl der Bakterien, und $p \Delta t$ die Wahrscheinlichkeit, dass eine Bakterie sich teilt. Mit $t > 0$. Man berechne die Anzahl der Bakterien so
+
+\begin{align*}
+  x(t + \Delta t) &= x(t) + p \Delta t \cdot x(t)\\
+  p\Delta t &= \frac{x(t + \Delta t) - x(t)}{\Delta t}
+  \intertext{Und mit $\Delta t \to 0$}
+  p\Delta t &= px(t)
+\end{align*}
+
+Somit wird unsere Differezialgleichung
+
+\begin{align*}
+  x'(t) &= px(t) \quad t > 0\\
+  x(0) &= x_0
+\end{align*}
+
 \end{document}
