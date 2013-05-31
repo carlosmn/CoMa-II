@@ -117,4 +117,17 @@ Eine Losung davon ist $x(t) = x_0 e^{pt}$. Wir zeigen, dass die Lösung gültig 
 
 Was das $x'(t)$ der Differenzialgleichung entspricht.
 
+Um \textbf{b)} zu Lösen, benutzen wir maple.
+
+\begin{lstlisting}
+  > ode := diff(x(t), t) = p *x(t) - k * x(t)^2;
+  > dsolve({ode, x(0) = x_0});
+\end{lstlisting}
+
+geben uns
+
+\[
+x(t) = \frac{-px_0}{-kx_0 + kx_0e^{-pt} - pe^{-pt}}
+\]
+
 \end{document}
