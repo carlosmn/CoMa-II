@@ -1,0 +1,55 @@
+\documentclass[ngerman,a4paper]{scrartcl}
+\usepackage{relsize}
+\usepackage{fullpage}
+\usepackage[german]{babel}
+\usepackage{graphicx}
+\usepackage{cancel}
+
+%Compiler
+\usepackage{ifxetex}
+\usepackage{ifluatex}
+\ifxetex
+  \usepackage{fontspec,xunicode}
+  \catcode`\ß=13
+  \defß{\ss}
+\else\ifluatex
+  \usepackage{fontspec,xunicode}
+\else
+  \usepackage[utf8]{inputenc}
+\fi\fi
+% /Compiler
+
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage{listings}
+\lstset{frame=single}
+
+\newcommand{\norm}[1]{\left|\!\left|#1\right|\! \right|}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+
+\begin{document}
+{\sffamily
+  \hfill
+  CoMa-II SS 2013\hfill
+  FU Berlin\\[8pt]
+  \noindent {\Huge Übung 6}\hfill Carlos Martín Nieto, Tran Tu\hrule \bigskip
+}
+
+\section*{1}
+
+\subsection*{a)}
+
+\paragraph{(1)}
+
+Wir leiten $y$ ab
+
+\begin{align*}
+  F(t,y) &= \dot{y} = \left(\frac{1}{1+t^2}\right)' =   \left((1+t^2)^{-1}\right)' = -(1+t^2)^{-2}(2t)\\
+&= -2t \cdot \frac{1}{(1+t^2)^2} = -2t \underbrace{ \left(\frac{1}{1+t^2} \right)^2}_{y(t)^2}
+\intertext{$y(t)$ ist genau was das $y$ Parameter ist}
+F(t,y) &= -2ty^2
+\end{align*}
+
+was den Wert in der Aufgabenstellung entspricht.
+
+\end{document}
