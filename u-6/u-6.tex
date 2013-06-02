@@ -65,6 +65,51 @@ F(t,y) &= 2-2y
 
 was den Wert in der Aufgabenstellung entspricht.
 
+\paragraph{b)}
+
+Die allgemeine Lösung hat die Form
+
+\[
+x(t) = C_1 e^{\lambda_1 t} + C_2 e^{\lambda_2 t}
+\]
+
+Wir wollen $\lambda_{1,2}$ berechnen also erhalten wir folgende Gleichungen
+
+\begin{align*}
+  x'' + x &= 0\\
+  \lambda^2 + 1 & = 0
+\end{align*}
+
+was wir mit der p-q-Formel lösen
+
+\begin{align*}
+  \lambda_{1,2} &= \pm \sqrt{1}i\\
+  r &= \frac{p}{2} = 0\\
+  \omega &= \sqrt{-9 - \left(\frac{p}{2}\right)^2} = \sqrt{1} = 1
+\end{align*}
+
+was wir wiederum in $x(t)$ einsetzen
+
+\begin{align*}
+  x(t) &= e^{rt} [C_1 \cos(\omega t) + C_2 \sin(\omega t)]\quad C_1, C_2 \in \R\\
+&= C_1 \cos(t) + C_2 \sin(t)
+\end{align*}
+
+mit dem AWP
+
+\begin{align*}
+  x'(t) &= -C_1 \sin(t) + C_2 \cos(t)\\
+  x'(0) &= C_2 = 0\\
+  x(0) &= C_1 = 1
+\end{align*}
+
+Die Lösung dieses AWP ist
+
+\begin{align*}
+  x(t) &= 1 \cdot \cos(t) + 0 \cdot sin(t)\\
+  &= \cos(t)
+\end{align*}
+
 \section*{2}
 
 \paragraph{a)}
