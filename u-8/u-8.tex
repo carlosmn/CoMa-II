@@ -1,0 +1,82 @@
+\documentclass[ngerman,a4paper]{scrartcl}
+\usepackage{relsize}
+\usepackage{fullpage}
+\usepackage[german]{babel}
+\usepackage{graphicx}
+\usepackage{cancel}
+
+%Compiler
+\usepackage{ifxetex}
+\usepackage{ifluatex}
+\ifxetex
+  \usepackage{fontspec,xunicode}
+  \catcode`\ß=13
+  \defß{\ss}
+\else\ifluatex
+  \usepackage{fontspec,xunicode}
+\else
+  \usepackage[utf8]{inputenc}
+\fi\fi
+% /Compiler
+
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage{listings}
+\lstset{frame=single}
+
+\newcommand{\norm}[1]{\left|\!\left|#1\right|\! \right|}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+
+\begin{document}
+{\sffamily
+  \hfill
+  CoMa-II SS 2013\hfill
+  FU Berlin\\[8pt]
+  \noindent {\Huge Übung 8}\hfill Carlos Martín Nieto, Tran Tu\hrule \bigskip
+}
+
+\section*{1}
+
+\begin{itemize}
+\item[a)] Nein, weil es mehr als eine Variable gibt
+\item[b)] Ja, gewöhnlich linear von Ordnung 1
+\item[c)] Ja, analog zu \textbf{b)}
+\item[d)] Nein, sie ist 2. Ordnung
+\end{itemize}
+\section*{2}
+
+\paragraph{a)}
+
+Benutzt man die Trapezregel, um die Integral zu berechnen, dann sieht so aus
+\begin{align*}
+  x(t + \tau) &= x(t) + \frac{t+\tau-t}{2} (f(t) + f(t+\tau))\\
+  &= x(t) + \frac{\tau}{2} (f(t) + f(t+\tau))
+\end{align*}
+
+\paragraph{b)}
+
+Mit dieser Form der Berechnung von $x(t+\tau)$ haben wir das gleiche
+Problem wie beim impliziten Verfahren, der Wert, den wir wollen ist
+auf beiden Seiten der Gleichung. Wir formen also um.
+
+Wie beim impliziten Verfahren, wählen wir eine Art von Funktion, mit
+der wir Arbeiten. In diesem Fall ist die Funktion der Form $f(t) =
+\lambda x(t)$. Es ginge analog mit der $f(t) = \lambda x(t) + g(t)$
+wir letzte Woche, aber aus Einfachheit Betrachten wir das diesmal
+nicht.
+
+\begin{align*}
+  x(t + \tau) &= x(t) + \frac{\tau}{2} \left[f(t) + f(t+\tau)\right]\\
+  \intertext{Wir ersetzen $f$ durch ihre generische Form}\\
+  &= x(t) + \frac{\tau}{2} \left[ \lambda x(t) + \lambda x(t+\tau) \right]\\
+  &= x(t) + \frac{\tau}{2} \lambda x(t) + \frac{\tau}{2} \lambda x(t+\tau)\\
+  x(t + \tau) - \frac{\tau}{2} \lambda x(t+\tau) &= x(t) + \frac{\tau}{2} \lambda x(t)\\
+  x(t + \tau)\cdot \underbrace{\left[1 - \frac{\tau\lambda}{2}\right]}_{\frac{2-\tau\lambda}{2}} &= x(t) + \frac{\tau}{2} \lambda x(t)\\
+  x(t + \tau) &= \frac{x(t) + \frac{\tau}{2} \lambda x(t)}{\frac{2-\tau\lambda}{2}}\\
+  x(t + \tau) &= \frac{2x(t) + \tau\lambda x(t)}{2 - \tau\lambda}
+\end{align*}
+
+Und diese Gleichung ist was wir im Matlab-Programm implementiert
+haben.
+
+\end{document}
