@@ -94,4 +94,32 @@ Selbst mit großen Werten von $N$ und $\tau$ wird der Fehler kleiner,
 also ist das System stabil und ist also ähnlicher zum impliziten
 Verfahren.
 
+\section*{3}
+
+Aus \textbf{Satz 3.8} wissen wir, dass
+
+\[
+\norm{x_\Delta - \tilde{x}_\Delta}_\infty \leq |x_0 - \tilde{x}_0|
+\]
+
+mit $f_\Delta = 0$. In Satz 3.9 betrachten wir das Maximum zwischen
+$|x_0 - \tilde{x}_0|$ und $\norm{f_\Delta -
+  \tilde{f}_\Delta}_\infty$. Nehmen wir daraus $\norm{f_\Delta -
+  \tilde{f}_\Delta}_\infty$, so ist es mindestens so groß wie $|x_0 -
+\tilde{x}_0|$. Multipliziert mal $(1 + T)$ macht den Wert noch größer.
+
+Also, ist
+
+\[
+\norm{x_\Delta - \tilde{x}_\Delta}_\infty \leq |x_0 - \tilde{x}_0|
+\]
+
+so ist $\norm{x_\Delta - \tilde{x}_\Delta}_\infty$
+genauso kleiner oder gleich der rechten Seite vom Satz 3.9. Es gilt also
+
+\[
+\norm{x_\Delta - \tilde{x}_\Delta}_\infty \leq (1+T) \max\left\{|x_0 -
+  \tilde{x}_0|, \norm{f_\Delta - \tilde{f}_\Delta}_\infty\right\}
+\]
+
 \end{document}
