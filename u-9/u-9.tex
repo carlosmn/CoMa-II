@@ -35,6 +35,39 @@
   \noindent {\Huge Übung 9}\hfill Carlos Martín Nieto, Tran Tu\hrule \bigskip
 }
 
+\section*{1}
+
+Mit der Tayloreihe
+
+\[
+x(t_k + \tau) = x(t_k) + x'(t_k)\tau + \frac{1}{2} x''(\xi) \tau^2
+\]
+
+und Konsistenzfehler-Formel
+
+\[
+\varepsilon(t_k,\tau) = x(t_k + \tau) - x(t_{k-1}) - \tau(\lambda x(t_k) + f(t_k))
+\]
+
+ergibt sich eine Konsistenzordung von:
+
+\begin{align*}
+\varepsilon(t_k,\tau) &= x(t_k + \tau) - x(t_{k-1}) - \tau(\lambda x(t_k) + f(t_k))\\
+&= \cancel(x(t_k)) + x'(t_k)\tau + \frac{1}{2}x''(\xi)\tau^2 - \cancel{x(t_k)} -\tau(\lambda x(t_k) + f(t_k))\\
+&= \tau(\cancel{x(t_k)} - \cancel{\lambda x(t_k) + f(t_k)}) + x(t_k) - x(t_{k-1}) + \frac{1}{2}x''(\xi)\tau^2\\
+&=  x(t_k) - x(t_{k-1}) + \frac{1}{2}x''(\xi)\tau^2
+\end{align*}
+
+Daraus ergbit sicht
+
+\begin{align*}
+   &\max_{t\in (0, T]} |x(t_k) - x(t_{k-1}) + \frac{1}{2}x''(\xi)\tau^2| = \\
+   &  |x(T)| - |x(T-\tau)| + \frac{1}{2}\max_{t\in (0, T]} |x''(\xi)|\tau^2
+\end{align*}
+
+Mit $C = |x(T)| - |x(T-\tau)| + \frac{1}{2}\norm{x''}_\infty$ haben
+wir die Form $C\tau^{p+1}$ mit $p=1$.
+
 \section*{2}
 
 Von der letzten Übung wissen wir
