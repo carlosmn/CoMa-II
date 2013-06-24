@@ -1,0 +1,90 @@
+\documentclass[ngerman,a4paper]{scrartcl}
+\usepackage{relsize}
+\usepackage{fullpage}
+\usepackage[german]{babel}
+\usepackage{graphicx}
+\usepackage{cancel}
+
+%Compiler
+\usepackage{ifxetex}
+\usepackage{ifluatex}
+\ifxetex
+  \usepackage{fontspec,xunicode}
+  \catcode`\ß=13
+  \defß{\ss}
+\else\ifluatex
+  \usepackage{fontspec,xunicode}
+\else
+  \usepackage[utf8]{inputenc}
+\fi\fi
+% /Compiler
+
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage{listings}
+\lstset{frame=single}
+
+\newcommand{\norm}[1]{\left|\!\left|#1\right|\! \right|}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+
+\begin{document}
+{\sffamily
+  \hfill
+  CoMa-II SS 2013\hfill
+  FU Berlin\\[8pt]
+  \noindent {\Huge Übung 9}\hfill Carlos Martín Nieto, Tran Tu\hrule \bigskip
+}
+
+\section*{2}
+
+Von der letzten Übung wissen wir
+
+\[
+x_{k+1} = x_k + \underbrace{\frac{\lambda \tau}{2} (x_k + x_{k+1})}_{\int\limits^{t+\tau}_t \lambda x \, dt}
+\]
+
+Daher gilt
+
+\[
+\varepsilon(t_k, \tau) = x_{k+1} - x_k - \frac{\lambda\tau}{2} (x_k + x_{k+1}) \quad (1)
+\]
+
+Da
+
+
+\begin{align*}
+  x'(t) &= \lambda x(t) \implies \frac{dx}{dt} \lambda x \quad t_k +
+  \tau t_{k+1}\\
+  &\implies \int^{t_{k+1}}_{t_k} \frac{dx}{dt} dt = \int^{t_{k+1}}_{t_k} \! \lambda x\, dt\\
+  &\implies x(t_{k+1}) - x(t_k) = \lambda \int^{t_{k+1}}_{t_k} \! x\, dt \quad (*)\\
+  \intertext{Trapezregel}\\
+  \lambda \int^{t_{k+1}}_{t_k} \! x\, dt &= \frac{\lambda\tau}{2} [x(t_{k+1}) + x(t_k)]
+\end{align*}
+
+Zuzüglich der Fehlerdarstellung der Trapezregel $\frac{\tau^3}{12}x''(\xi)$
+
+
+\begin{align*}
+  (*) \quad x(t_{k+1}) - x(t_k) &= \frac{\lambda\tau}{2}[x(t_{k+1}) +
+  x(t_k)] + \frac{\tau^3}{12} x''(\xi)\\
+  x(t_k + 1) = x(t_k) + \frac{\lambda\tau}{2} [x(t_{k+1}) +
+  x(t_k)] + \frac{\tau^3}{12} x''(\xi)\\
+\end{align*}
+
+Wir setzen (2) in (1) ein
+
+\begin{align*}
+  \varepsilon(t_k, \tau) &= \cancel{x_k} + \cancel{\frac{\lambda\tau}{2} (x_{k+1} + x_k)}
+  + \frac{\tau^3}{12} x''(\xi) - \cancel{x_k} - \cancel{\frac{\lambda\tau}{2} (x_{k} + x_{k+1})}\\
+  &= \frac{\tau^3}{12} x''(\xi)
+\end{align*}
+
+Daraus folgt
+
+\[
+\max_{k=0,\dots,n-1} |\varepsilon(t_k, \tau)| \leq \frac{1}{12} \max_{t \in (0, T]} | x''(t)| \tau^3
+\]
+
+$\implies$ $p=2$ mit $C = \frac{1}{12} ||x''||_\infty$
+
+\end{document}
