@@ -1,9 +1,9 @@
 function HP
-  taus = [20 5 0.5 0.2 0.01];
+  taus = [2 1 0.5 0.2 0.01];
   fmt = ['b', 'g', 'c', 'm', 'k'];
 
-  N = 2000;
-  lambda = -100;
+  N = 20;
+  lambda = -0.5;
   real = exp([0:0.1:N] * lambda);
   subplot(2,1,1)
   hold off
@@ -33,4 +33,16 @@ function HP
   subplot(2,1,2)
   legend('\tau=2', '\tau=1', '\tau=0.5', '\tau=0.1', '\tau=0.01')
 
+end
+
+function y = expEuler(x0, tau, N, lambda)
+  xs = [ x0 ];
+  for k = 1:N
+    divisor = 2 - tau * lambda;
+    dividend = 2 * xs(k) + tau * lambda * xs(k);
+    x = dividend / divisor;
+    xs = [xs x];
+  end
+
+  y = xs;
 end
