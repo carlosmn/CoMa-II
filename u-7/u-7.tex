@@ -1,0 +1,102 @@
+\documentclass[ngerman,a4paper]{scrartcl}
+\usepackage{relsize}
+\usepackage{fullpage}
+\usepackage[german]{babel}
+\usepackage{graphicx}
+\usepackage{cancel}
+
+%Compiler
+\usepackage{ifxetex}
+\usepackage{ifluatex}
+\ifxetex
+  \usepackage{fontspec,xunicode}
+  \catcode`\ß=13
+  \defß{\ss}
+\else\ifluatex
+  \usepackage{fontspec,xunicode}
+\else
+  \usepackage[utf8]{inputenc}
+\fi\fi
+% /Compiler
+
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage{listings}
+\lstset{frame=single}
+
+\newcommand{\norm}[1]{\left|\!\left|#1\right|\! \right|}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+
+\begin{document}
+{\sffamily
+  \hfill
+  CoMa-II SS 2013\hfill
+  FU Berlin\\[8pt]
+  \noindent {\Huge Übung 6}\hfill Carlos Martín Nieto, Tran Tu\hrule \bigskip
+}
+
+\section*{2}
+
+\paragraph{a)}
+
+
+Nach der Lösung der letzten Woche haben wir
+\begin{align*}
+  x(t) &= C_1 \cos(t) + C_2 \sin(t)\\
+  x(0) &= \boxed{C_1 = x_0}\\
+  x'(t) &= -C_1 \sin(t) + C_2 \cos(t)\\
+  x'(t) &= \boxed{C_2 = 0}
+\end{align*}
+
+Wir setzen dies in $E(x,x')$ ein:
+\begin{align*}
+  E(x,x') &= \sqrt{x_0^2 \sin^2(t) + x_0^2 \cos^2(t)}\\
+  &= \sqrt{x_0^2 (\sin^2(t) + \cos^2(t))}\\
+  &= \sqrt{x_0^2} = x_0\\
+  E(x,x') &= 0
+\end{align*}
+
+\paragraph{b)}
+
+
+\begin{align*}
+  \begin{array}{c}
+    x_1(t) =\\
+    x_2(t) =
+  \end{array}
+  \begin{pmatrix}
+    C_1 \cos(t)\\
+    C_1 \sin(t)
+  \end{pmatrix}
+&= C_1 \cdot
+\begin{pmatrix}
+  \cos(t)\\ 0
+\end{pmatrix} + C_1 \cdot
+\begin{pmatrix}
+  0\\ -\sin
+\end{pmatrix}\\
+&= x_0 \sin(t)
+\begin{pmatrix}
+  0\\ -1
+\end{pmatrix} + x_0 \cos(t)
+\begin{pmatrix}
+  1\\ 0
+\end{pmatrix}\\
+\begin{pmatrix}
+  \cancel{x_0} \sin'(t)\\ \cancel{x_0} \cos'(t)
+\end{pmatrix} &=
+\begin{pmatrix}
+  \cancel{x_0} \sin(t)\\ \cancel{x_0} \cos(t)
+\end{pmatrix} \cdot
+\begin{pmatrix}
+  0 & 1\\-1 & 0
+\end{pmatrix}
+\end{align*}
+
+Die Funktion E würde jetzt so aussehen
+
+\[
+E = \text{Skalaprodukt}\{{-x_0 \cdot \sin, x_0 \cdot \cos}\}
+\]
+
+\end{document}
