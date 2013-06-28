@@ -3,10 +3,21 @@ function HP
   x0 = [1; 0];
 
   res = trapez(x0, 0.1, 100, A);
+  first = res(1,:);
+  second = res(2,:);
   hold off
-  plot(0:0.1:10, res(1,:))
+  plot(0:0.1:10, first, 'b')
   hold on
-  plot(0:0.1:10, res(2,:))
+  plot(0:0.1:10, second, 'r')
+
+  dres = [];
+  for i=1:length(res)
+      d = A * res(:,i);
+      dres = [dres d];
+  end
+
+  plot(0:0.1:10, sqrt(dres(1,:).^2 + dres(2,:).^2))
+  
 end
 
 function xs = trapez(x0, tau, N, A)
