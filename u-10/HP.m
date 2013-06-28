@@ -6,9 +6,10 @@ function HP
   first = res(1,:);
   second = res(2,:);
   hold off
-  plot(0:0.1:10, first, 'b')
-  hold on
-  plot(0:0.1:10, second, 'r')
+  %subplot(2,1,1)
+  %plot(0:0.1:10, first, 'b')
+  %hold on
+  %plot(0:0.1:10, second, 'r')
 
   dres = [];
   for i=1:length(res)
@@ -16,8 +17,19 @@ function HP
       dres = [dres d];
   end
 
-  plot(0:0.1:10, sqrt(dres(1,:).^2 + dres(2,:).^2))
-  
+  %plot(0:0.1:10, sqrt(dres(1,:).^2 + dres(2,:).^2))
+  %subplot(2,1,2)
+
+  N = 20;
+  n = newton(1, @(x) cos(x), @(x) -sin(x), -1, N)
+  plot(n, 'r')
+
+  hold on
+  n = newton(1, @(x) atan(x), @(x) (1/(x^2 + 1)), pi/4.0, N)
+  plot(n, 'b')
+
+  n = newton(1, @(x) x^(1/3), @(x) (x^(-2/3))/3.0, 2, N)
+  plot(n, 'g')
 end
 
 function xs = trapez(x0, tau, N, A)
@@ -31,5 +43,15 @@ function xs = trapez(x0, tau, N, A)
 
     xin = [x(1); x(2)];
     xs = [xs xin];
+  end
+end
+
+function xs = newton(x0, f, df, y, N)
+  xs = [ x0 ];
+
+  for k = 1:N
+      xk = xs(k);
+      x = xk - ( (f(xk) - y)/df(xk) );
+      xs = [xs x];
   end
 end
