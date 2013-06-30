@@ -1,0 +1,166 @@
+\documentclass[ngerman,a4paper]{scrartcl}
+\usepackage{relsize}
+\usepackage{fullpage}
+\usepackage[german]{babel}
+\usepackage{graphicx}
+\usepackage{cancel}
+
+%Compiler
+\usepackage{ifxetex}
+\usepackage{ifluatex}
+\ifxetex
+  \usepackage{fontspec,xunicode}
+  \catcode`\ß=13
+  \defß{\ss}
+\else\ifluatex
+  \usepackage{fontspec,xunicode}
+\else
+  \usepackage[utf8]{inputenc}
+\fi\fi
+% /Compiler
+
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage{listings}
+\lstset{frame=single}
+
+\newcommand{\norm}[1]{\left|\!\left|#1\right|\! \right|}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+
+\begin{document}
+{\sffamily
+  \hfill
+  CoMa-II SS 2013\hfill
+  FU Berlin\\[8pt]
+  \noindent {\Huge Übung 10}\hfill Carlos Martín Nieto, Tran Tu\hrule \bigskip
+}
+
+\section*{1}
+
+\paragraph{b)}
+
+Wir zeigen durch einfaches einsetzen. Zuerst berechnen wir $\dot{y}(t)$ "`direkt".
+
+\[
+  y(t) =
+  \begin{pmatrix}
+    \sin(ct)\\ \cos(ct)
+  \end{pmatrix}
+  \qquad
+  \dot{y}(t) =
+  \begin{pmatrix}
+    \cos(ct)\cdot c\\ -\sin(ct) \cdot c
+  \end{pmatrix}
+\]
+
+und dann durch $Ay(t)$.
+\[
+  Ay(t) =
+  \begin{pmatrix}
+    0 & c\\ -c & 0
+  \end{pmatrix}
+  \begin{pmatrix}
+    \sin(ct)\\ \cos(ct)
+  \end{pmatrix} =
+  \begin{pmatrix}
+    c \cos(ct)\cdot c\\ c -\sin(ct)
+  \end{pmatrix}
+\]
+
+und analog für $\tilde{y}(t)$. Zuerst direkt
+\[
+  \tilde{y}(t) =
+  \begin{pmatrix}
+    -\cos(ct)\\ \sin(ct)
+  \end{pmatrix}
+  \qquad
+  \dot{\tilde{y}}(t) =
+  \begin{pmatrix}
+    \sin(ct) \cdot c\\ \cos(ct)\cdot c
+  \end{pmatrix}
+\]
+
+und dann durch $A\tilde{y}(t)$.
+\[
+  A\tilde{y}(t) =
+  \begin{pmatrix}
+    0 & c\\ -c & 0
+  \end{pmatrix}
+  \begin{pmatrix}
+    -\cos(ct)\\ \sin(ct)
+  \end{pmatrix} =
+  \begin{pmatrix}
+    c \sin(ct) \\ c \cos(ct)
+  \end{pmatrix}
+\]
+
+\paragraph{c)}
+
+\begin{align*}
+  y(0) =
+  \begin{pmatrix}
+    \alpha \\ \beta
+  \end{pmatrix} &= C_1
+  \begin{pmatrix}
+    \sin(0)\\ \cos(0)
+  \end{pmatrix} + C_2
+  \begin{pmatrix}
+    -\cos(0)\\ \sin(0)
+  \end{pmatrix}\\
+  &= C_1
+  \begin{pmatrix}
+    0 \\ 1
+  \end{pmatrix} + C_2
+  \begin{pmatrix}
+    -1\\ 0
+  \end{pmatrix}\\
+\alpha = -C_2 \implies C_2 &= -\alpha\\
+\beta &= C_1\\
+\implies y(t) &= \beta
+\begin{pmatrix}
+  \sin(ct)\\ \cos(ct)
+\end{pmatrix} - \alpha
+\begin{pmatrix}
+  -\cos(ct) \\ \sin(0)
+\end{pmatrix}
+\end{align*}
+\section*{2}
+
+Zur Erinnerung, die Trapezregel ist
+
+
+\begin{align*}
+  x(t+\tau) &= x(t) + \frac{\tau}{2} (f(t) + f(t + \tau))\\
+  &= x(t) + \frac{\tau}{2} (Ax(t) + Ax(t + \tau))\\
+  \intertext{Wir müssen wieder nach $x(t+\tau)$ lösen}\\
+  x(t+\tau) &= x(t) + \frac{\tau}{2} Ax(t) + \frac{\tau}{2} Ax(t + \tau)\\
+  x(t+\tau) - \frac{\tau}{2} Ax(t + \tau)&= x(t) + \frac{\tau}{2} Ax(t)\\
+  \left[E  -\frac{\tau}{2} A\right] x(t+\tau) &= \left[E + \frac{\tau}{2} A\right] x(t)\\
+  \left[E  -\frac{\tau}{2} A\right]^{-1} \left[E  -\frac{\tau}{2} A\right] x(t+\tau) &= \left[E  -\frac{\tau}{2} A\right]^{-1} \left[E + \frac{\tau}{2} A\right] x(t)\\
+  x(t+\tau) &= \left[E  -\frac{\tau}{2} A\right]^{-1} \left[E + \frac{\tau}{2} A\right] x(t)
+\end{align*}
+
+\section*{3}
+
+Fixpunktiteration löst Gleichungen der Form
+
+\[
+f(x) = 0
+\]
+
+Wir haben aber
+
+\[
+g(x) = y
+\]
+
+Dies lässt sich leicht lösen, indem wir $f$ so definieren
+
+\[
+f(x) = g(x) - y
+\]
+
+dass $=0$ gilt. Da $y$ eine Konstante ist, ist die Ableitung von
+$f(x)$ auch die Ableitung von $g(x)$.
+
+\end{document}
